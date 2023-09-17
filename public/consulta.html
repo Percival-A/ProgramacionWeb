@@ -48,36 +48,16 @@
     </nav>
 
     <!-- Contenido principal -->
-    <main class="container mt-4">
-        <h2>Inventario de Productos</h2>
-        <p>A continuación se muestra la lista de productos disponibles:</p>
-
-        <!-- Tabla para mostrar el inventario -->
-        <table class="table table-striped">
-            <thead class="bg-dark text-white">
-                <tr>
-                    <th>ID</th>
-                    <th>Producto</th>
-                    <th>Descripción</th>
-                    <th>Precio</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Aquí se llenaría dinámicamente con los productos. A continuación se muestra una fila de ejemplo. -->
-                <tr>
-                    <td>1</td>
-                    <td>Producto Ejemplo</td>
-                    <td>Descripción del producto</td>
-                    <td>$100</td>
-                    <td>
-                        <a href="editar_producto.html" class="btn btn-warning btn-sm">Editar</a>
-                        <a href="eliminar_producto.html" class="btn btn-danger btn-sm">Eliminar</a>
-                    </td>
-                </tr>
-            </tbody>
+    <div class="container mt-5">
+        <h2 class="mb-4">Lista de Productos</h2>
+    
+        <!-- Tabla para mostrar productos -->
+        <table id="productTable" class="table table-bordered table-hover">
+            <!-- La función fetchAndDisplayProducts() llenará este espacio -->
         </table>
-    </main>
+    </div>
+
+    
 
     <!-- Pie de página -->
     <footer class="text-center bg-primary text-white py-3">
@@ -85,9 +65,19 @@
     </footer>
 
     <!-- Incorporar Bootstrap JS y Popper.js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Incorpora tu archivo script.js -->
+<script src="script.js"></script>
+<script>
+    // Ejecuta la función cuando la página se cargue
+    window.onload = fetchAndDisplayProducts;
+</script>
+
 </body>
 
 </html>
