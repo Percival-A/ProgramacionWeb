@@ -154,3 +154,7 @@ function deleteProduct() {
     });
 }
 
+addProductButton.addEventListener('click', insertProduct);
+saveProductButton.addEventListener('click', updateProduct);
+deleteButton.addEventListener('click', deleteProduct);
+
