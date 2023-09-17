@@ -1,5 +1,5 @@
 
-// Paso 3.0.1: Función para inserta.html
+// Función para inserta.html
 
 function insertProduct() {
     // Recoge los valores de los campos del formulario
@@ -49,7 +49,7 @@ function insertProduct() {
     });
 }
 
-// Paso 3.0.2: Función para consulta.html
+// Función para consulta.html
 
 function fetchAndDisplayProducts() {
     // Obtiene la información de productos del servidor
@@ -95,6 +95,41 @@ function fetchAndDisplayProducts() {
     });
 }
 
-// Es posible que desees ejecutar esta función cuando la página se cargue
+// se ejecuta esta función cuando la página se cargue
 // window.onload = fetchAndDisplayProducts;
+
+// Función para actualizar el producto
+function updateProduct() {
+    const productId = document.getElementById('productId').value;
+    const productName = document.getElementById('productName').value;
+    const productDescription = document.getElementById('productDescription').value;
+    const productPrice = document.getElementById('productPrice').value;
+
+    const productData = {
+        id: productId,
+        name: productName,
+        description: productDescription,
+        price: productPrice
+    };
+
+    fetch(`/update-product`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(productData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Producto actualizado exitosamente!');
+        } else {
+            alert('Error al actualizar el producto.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Ocurrió un error al actualizar el producto.');
+    });
+}
 
