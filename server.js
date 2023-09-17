@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Configuración de la base de datos SQLite
-const dbFile = './sqlite.db';
+const dbFile = './.data/sqlite.db';
 const db = new sqlite3.Database(dbFile, (err) => {
     if (err) {
         console.error(err.message);
