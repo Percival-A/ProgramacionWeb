@@ -133,3 +133,24 @@ function updateProduct() {
     });
 }
 
+// Función para eliminar el producto
+function deleteProduct() {
+    const productId = document.getElementById('productID').value;
+
+    fetch(`/delete-product/${productId}`, {
+        method: 'DELETE'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Producto eliminado exitosamente!');
+        } else {
+            alert('Error al eliminar el producto.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Ocurrió un error al eliminar el producto.');
+    });
+}
+
