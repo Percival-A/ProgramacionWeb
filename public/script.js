@@ -49,3 +49,52 @@ function insertProduct() {
     });
 }
 
+// Paso 3.0.2: Función para consulta.html
+
+function fetchAndDisplayProducts() {
+    // Obtiene la información de productos del servidor
+    fetch('/getProducts')
+    .then(response => response.json())
+    .then(data => {
+        // Verifica si se obtuvo algún dato
+        if (data && data.length > 0) {
+            let tableHTML = `
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Producto</th>
+                        <th>Descripcion</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+            `;
+
+            data.forEach(product => {
+                tableHTML += `
+                    <tr>
+                        <td>${product.id}</td>
+                        <td>${product.name}</td>
+                        <td>${product.description}</td>
+                        <td>${product.price}</td>
+                    </tr>
+                `;
+            });
+
+            tableHTML += '</tbody>';
+
+            // Inserta el contenido de la tabla en el HTML
+            document.querySelector("#productTable").innerHTML = tableHTML;
+        } else {
+            document.querySelector("#productTable").innerHTML = '<p>No hay productos registrados</p>';
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.querySelector("#productTable").innerHTML = '<p>Hubo un error al cargar los productos.</p>';
+    });
+}
+
+// Es posible que desees ejecutar esta función cuando la página se cargue
+// window.onload = fetchAndDisplayProducts;
+
