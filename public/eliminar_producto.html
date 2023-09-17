@@ -53,17 +53,12 @@
         <p>Seleccione el producto que desea eliminar y confirme la acción:</p>
 
         <!-- Formulario para eliminar producto -->
-        <form action="#" method="post">
+        <form action="/delete-product" method="post">
             <div class="form-group">
-                <label for="productSelect">Producto a eliminar:</label>
-                <select class="form-control" id="productSelect">
-                    <option>Producto 1</option>
-                    <option>Producto 2</option>
-                    <option>Producto 3</option>
-                    <!-- Aquí podrían ir más productos dinámicamente desde una base de datos -->
-                </select>
+                <label for="productID">ID del Producto a eliminar:</label>
+                <input type="text" class="form-control" id="productID" name="productID" placeholder="Ingresa el ID del producto">
             </div>
-            <button type="submit" class="btn btn-danger">Eliminar Producto</button>
+            <button type="submit" class="btn btn-danger" id="deleteButton">Eliminar Producto</button>
         </form>
     </main>
 
