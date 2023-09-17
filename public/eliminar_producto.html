@@ -53,12 +53,13 @@
         <p>Seleccione el producto que desea eliminar y confirme la acción:</p>
 
         <!-- Formulario para eliminar producto -->
-        <form action="/delete-product" method="post">
+        <form id="deleteForm">
             <div class="form-group">
                 <label for="deleteProductID">ID del Producto a eliminar:</label>
                 <input type="text" class="form-control" id="productID" name="productID" placeholder="Ingresa el ID del producto">
             </div>
-            <button type="submit" class="btn btn-danger" id="deleteButton">Eliminar Producto</button>
+            <button type="button" class="btn btn-danger" id="deleteButton">Eliminar Producto</button>
+
         </form>        
     </main>
 
@@ -72,6 +73,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        deleteButton.addEventListener('click', deleteProduct);
+    </script>
 </body>
 
 </html>

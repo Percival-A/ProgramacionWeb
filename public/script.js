@@ -100,17 +100,26 @@ function fetchAndDisplayProducts() {
 
 // Función para actualizar el producto
 function updateProduct() {
-    const productId = document.getElementById('productId').value;
+    const productId = document.getElementById('productID').value;
     const productName = document.getElementById('productName').value;
     const productDescription = document.getElementById('productDescription').value;
     const productPrice = document.getElementById('productPrice').value;
 
     const productData = {
-        id: productId,
-        name: productName,
-        description: productDescription,
-        price: productPrice
+        id: productId  // Asumiendo que el ID siempre es necesario
     };
+
+    if (productName) {
+        productData.name = productName;
+    }
+
+    if (productDescription) {
+        productData.description = productDescription;
+    }
+
+    if (productPrice) {
+        productData.price = productPrice;
+    }
 
     fetch(`/update-product`, {
         method: 'PUT',
@@ -136,11 +145,15 @@ function updateProduct() {
 // Función para eliminar el producto
 function deleteProduct() {
     const productId = document.getElementById('productID').value;
+    console.log(productId);
 
     fetch(`/delete-product/${productId}`, {
         method: 'DELETE'
     })
-    .then(response => response.json())
+    .then(response => {
+        console.log(response);
+        return response.json();
+    })
     .then(data => {
         if (data.success) {
             alert('Producto eliminado exitosamente!');
@@ -153,8 +166,10 @@ function deleteProduct() {
         alert('Ocurrió un error al eliminar el producto.');
     });
 }
+// Capturar el evento 'submit' del formulario
+console.log("Script cargado.");
 
-addProductButton.addEventListener('click', insertProduct);
-addProductButton.addEventListener('click', updateProduct);
-deleteButton.addEventListener('click', deleteProduct);
+
+
+
 

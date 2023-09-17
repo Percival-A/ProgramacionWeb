@@ -4,7 +4,7 @@ const sqlite3 = require('sqlite3').verbose();
 // Inicializa express
 const app = express();
 // Definimos el puerto donde se ejecutará nuestro servidor.
-const PORT = process.env.PORT || 3000 || 5500;
+const PORT = process.env.PORT || 3000;
 
 // Middleware para parsear JSON
 app.use(express.json());
@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Configuración de la base de datos SQLite
-const dbFile = './.data/sqlite.db';
+const dbFile = './sqlite.db';
 const db = new sqlite3.Database(dbFile, (err) => {
     if (err) {
         console.error(err.message);
@@ -74,10 +74,44 @@ app.get('/getProducts', (req, res) => {
 app.put('/update-product', (req, res) => {
     // Extraer datos del producto desde el cuerpo de la solicitud
     const { id, name, description, price } = req.body;
-    
-    // Preparar y ejecutar la consulta SQL para actualizar un producto
-    const stmt = db.prepare("UPDATE products SET name = ?, description = ?, price = ? WHERE id = ?");
-    stmt.run(name, description, price, id, (err) => {
+
+    // Si no se proporciona ID, no podemos continuar
+    if (!id) {
+        res.status(400).send({ error: "ID del producto es requerido." });
+        return;
+    }
+
+    let fieldsToUpdate = [];
+    let values = [];
+
+    if (name) {
+        fieldsToUpdate.push("name = ?");
+        values.push(name);
+    }
+
+    if (description) {
+        fieldsToUpdate.push("description = ?");
+        values.push(description);
+    }
+
+    if (price) {
+        fieldsToUpdate.push("price = ?");
+        values.push(price);
+    }
+
+    // Añadir el ID al final de los valores para la cláusula WHERE
+    values.push(id);
+
+    // Si no hay campos para actualizar, no podemos continuar
+    if (fieldsToUpdate.length === 0) {
+        res.status(400).send({ error: "No se proporcionaron campos para actualizar." });
+        return;
+    }
+
+    const sql = `UPDATE products SET ${fieldsToUpdate.join(", ")} WHERE id = ?`;
+
+    const stmt = db.prepare(sql);
+    stmt.run(values, (err) => {
         if (err) {
             res.status(500).send({ error: "Error al actualizar el producto." });
             return;
@@ -87,15 +121,17 @@ app.put('/update-product', (req, res) => {
     stmt.finalize();
 });
 
+
 // Ruta para eliminar un producto
 app.delete('/delete-product/:productId', (req, res) => {
     // Extraer el ID del producto desde los parámetros de la ruta
     const productId = req.params.productId;
-    
+    console.log('Attempting to delete product with id:', productId);  // <- Aquí conslo
     // Preparar y ejecutar la consulta SQL para eliminar un producto
     const stmt = db.prepare("DELETE FROM products WHERE id = ?");
     stmt.run(productId, (err) => {
         if (err) {
+            console.error('Error:', err.message);  // <- Aquí también
             res.status(500).send({ error: "Error al eliminar el producto." });
             return;
         }

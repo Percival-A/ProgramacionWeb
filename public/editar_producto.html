@@ -56,21 +56,21 @@
         <form action="#" method="post">
             <div class="form-group">
                 <label for="productID">ID del Producto:</label>
-                <input type="text" class="form-control" id="productID" name="productID" placeholder="Ingresa el ID del producto" readonly>
+                <input type="text" class="form-control" id="productID" name="productID" placeholder="Ingresa el ID del producto">
             </div>
             <div class="form-group">
                 <label for="productName">Nombre del Producto:</label>
-                <input type="text" class="form-control" id="productName" name="productName" value="Producto Ejemplo">
+                <input type="text" class="form-control" id="productName" name="productName" placeholder="Ingresa el nombre del proucto">
             </div>
             <div class="form-group">
                 <label for="productDescription">Descripción:</label>
-                <textarea class="form-control" id="productDescription" name="productDescription" rows="3">Descripción del producto</textarea>
+                <input type="text" class="form-control" id="productDescription" name="productDescription" placeholder="Ingresa la descripción del producto">
             </div>
             <div class="form-group">
                 <label for="productPrice">Precio:</label>
-                <input type="number" class="form-control" id="productPrice" name="productPrice" value="100">
+                <input type="number" class="form-control" id="productPrice" name="productPrice" placeholder="Ingresa el precio">
             </div>
-            <button type="submit" class="btn btn-primary" id="saveProductButton">Guardar Cambios</button>
+            <button type="button" class="btn btn-primary" id="saveProductButton">Guardar Cambios</button>
         </form>        
     </main>
 
@@ -84,6 +84,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        saveProductButton.addEventListener('click', updateProduct);
+    </script>
 </body>
 
 </html>
