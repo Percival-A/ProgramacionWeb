@@ -37,16 +37,16 @@ const db = new sqlite3.Database(dbFile, (err) => {
                 // Precarga de datos
                 const query = `INSERT OR IGNORE INTO products (id, name, description, price) VALUES (?, ?, ?, ?)`;
                 const autos = [
-                    { id: 001, name: 'Nissan Versa', description: 'Sedán compacto con buen rendimiento de combustible y características modernas.', price: 250000 },
-                    { id: 002, name: 'Volkswagen Golf', description: 'Hatchback versátil y divertido de conducir.', price: 350000 },
-                    { id: 003, name: 'Ford Ranger', description: 'Camioneta pickup mediana, ideal para el trabajo y la aventura.', price: 450000 },
-                    { id: 004, name: 'Toyota Corolla', description: 'Sedán confiable y eficiente en combustible.', price: 300000 },
-                    { id: 005, name: 'Honda Civic', description: 'Sedán compacto con un diseño atractivo y tecnología avanzada.', price: 330000 },
-                    { id: 006, name: 'Chevrolet Spark', description: 'Automóvil subcompacto, perfecto para la ciudad.', price: 200000 },
-                    { id: 007, name: 'Hyundai Tucson', description: 'SUV compacto con estilo y comodidad.', price: 480000 },
-                    { id: 008, name: 'Mazda CX-5', description: 'SUV elegante y deportivo con un interior de alta calidad.', price: 450000 },
-                    { id: 009, name: 'Jeep Wrangler', description: 'Icono todoterreno con estilo retro.', price: 700000 },
-                    { id: 010, name: 'Tesla Model 3', description: 'Automóvil eléctrico con tecnología de vanguardia.', price: 800000 }
+                    { id: 1, name: 'Nissan Versa', description: 'Sedán compacto con buen rendimiento de combustible y características modernas.', price: 250000 },
+                    { id: 2, name: 'Volkswagen Golf', description: 'Hatchback versátil y divertido de conducir.', price: 350000 },
+                    { id: 3, name: 'Ford Ranger', description: 'Camioneta pickup mediana, ideal para el trabajo y la aventura.', price: 450000 },
+                    { id: 4, name: 'Toyota Corolla', description: 'Sedán confiable y eficiente en combustible.', price: 300000 },
+                    { id: 5, name: 'Honda Civic', description: 'Sedán compacto con un diseño atractivo y tecnología avanzada.', price: 330000 },
+                    { id: 6, name: 'Chevrolet Spark', description: 'Automóvil subcompacto, perfecto para la ciudad.', price: 200000 },
+                    { id: 7, name: 'Hyundai Tucson', description: 'SUV compacto con estilo y comodidad.', price: 480000 },
+                    { id: 8, name: 'Mazda CX-5', description: 'SUV elegante y deportivo con un interior de alta calidad.', price: 450000 },
+                    { id: 9, name: 'Jeep Wrangler', description: 'Icono todoterreno con estilo retro.', price: 700000 },
+                    { id: 10, name: 'Tesla Model 3', description: 'Automóvil eléctrico con tecnología de vanguardia.', price: 800000 }
                 ];
 
                 autos.forEach(auto => {
