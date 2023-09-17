@@ -155,6 +155,6 @@ function deleteProduct() {
 }
 
 addProductButton.addEventListener('click', insertProduct);
-saveProductButton.addEventListener('click', updateProduct);
+addProductButton.addEventListener('click', updateProduct);
 deleteButton.addEventListener('click', deleteProduct);
 

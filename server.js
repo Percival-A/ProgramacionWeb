@@ -4,7 +4,7 @@ const sqlite3 = require('sqlite3').verbose();
 // Inicializa express
 const app = express();
 // Definimos el puerto donde se ejecutará nuestro servidor.
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000 || 5500;
 
 // Middleware para parsear JSON
 app.use(express.json());
