@@ -14,3 +14,66 @@ main {
     border-radius: 5px;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
+
+/* Estilos base para todos los botones */
+.boton-correo, .btn-primary, .btn-danger {
+    border: none;               /* Removemos el borde por defecto */
+    border-radius: 5px;         /* Bordes redondeados */
+    padding: 10px 20px;         /* Espaciado interno para darle tamaño al botón */
+    cursor: pointer;            /* Cambiamos el cursor al pasar sobre el botón */
+    font-size: 16px;            /* Tamaño del texto */
+    transition: background-color 0.3s, transform 0.3s; /* Animaciones suaves al pasar el mouse */
+}
+
+/* Estilo para botón de correo */
+.boton-correo {
+    background-color: #007BFF;
+    color: white;
+}
+
+.boton-correo:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.boton-correo:active {
+    transform: scale(1);
+    background-color: #004085;
+}
+
+/* Estilos para botón Agregar y Guardar Producto (btn-primary) */
+.btn-primary {
+    background-color: #007BFF;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.btn-primary:active {
+    transform: scale(1);
+    background-color: #004085;
+}
+
+/* Estilos para botón Eliminar Producto (btn-danger) */
+.btn-danger {
+    background-color: #dc3545; /* Rojo base */
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333; /* Rojo un poco más oscuro al pasar el mouse */
+    transform: scale(1.05);
+}
+
+.btn-danger:active {
+    transform: scale(1);
+    background-color: #bd2130; /* Rojo todavía más oscuro al presionar */
+}
+
+/* Estilos para el enlace para asegurar que no afecte al diseño del botón */
+a[href^="mailto:"] {
+    text-decoration: none; /* Removemos el subrayado de los enlaces */
+}
